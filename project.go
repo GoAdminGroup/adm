@@ -21,6 +21,7 @@ import (
 type Project struct {
 	Port         string
 	Theme        string
+	ThemePath    string
 	Prefix       string
 	Language     string
 	Driver       string
@@ -248,6 +249,11 @@ func installProjectTmpl(p Project, cfg *config.Config, cfgFile string, info *dbI
 	mkdirs([]string{"pages", "tables", "logs", "uploads", "html", "build"})
 	mkEmptyFiles([]string{"./logs/access.log", "./logs/info.log", "./logs/error.log"})
 
+	p.ThemePath = p.Theme
+	if strings.Contains(p.Theme, "_sep") {
+		p.ThemePath = strings.Replace(p.Theme, "_sep", "", -1) + "/separation"
+	}
+
 	var fileConfigs = newWriteFilesConfig()
 	fileConfigs.Add("./main.go", "main.go/"+p.Framework+".tmpl", p, 0644)
 
@@ -256,7 +262,7 @@ func installProjectTmpl(p Project, cfg *config.Config, cfgFile string, info *dbI
 		fileConfigs.Add("./models/base.go", "orm.go.tmpl", p, os.ModePerm)
 	}
 
-	fileConfigs.Add("./pages/index.go", "pages/index.go."+p.Theme+".tmpl", p, os.ModePerm)
+	fileConfigs.Add("./pages/index.go", "pages/index.go."+strings.Replace(p.Theme, "_sep", "", -1)+".tmpl", p, os.ModePerm)
 	fileConfigs.Add("./main_test.go", "main_test.go/"+langMap[p.Language]+".tmpl", p, 0644)
 	fileConfigs.Add("./README.md", "readme/"+langMap[p.Language]+".tmpl", p, 0644)
 	fileConfigs.Add("./config.yml", "config.yml/"+langMap[p.Language]+".tmpl", cfg, 0644)

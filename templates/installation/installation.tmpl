@@ -270,9 +270,20 @@
                                     <div class="menu" tabindex="-1">
                                         <div class="item active selected" data-value="sword">Sword</div>
                                         <div class="item" data-value="adminlte">Adminlte</div>
+                                        <div class="item" data-value="sword_sep">Sword Seperate</div>
+                                        <div class="item" data-value="adminlte_sep">Adminlte Seperate</div>
                                     </div>
                                 </div>
                             </div>
+
+                            <div id="assets_path" class="hide">
+                                <div class="inline required field ">
+                                    <label for="assets_path">{{local "web.assets path"}}</label>
+                                    <input id="assets_path" name="assets_path" value="./public/">
+                                    <span class="help">{{local "web.local path of assets files"}}<br><a id="assets_link">public.zip</a></span>
+                                </div>
+                            </div>
+
                             <div class="inline required field ">
                                 <label>{{local "web.language"}}</label>
                                 <div class="ui selection database type dropdown" tabindex="0">
@@ -605,6 +616,23 @@
             });
         });
 
+
+        $("#theme").change(function () {
+            let theme = $(this).val();
+            if (theme === "sword_sep") {
+                $('#assets_path').show();
+                $('#assets_link').attr("href", "https://gitee.com/go-admin/themes/raw/master/sword/separation/public.zip");
+                return;
+            }
+
+            if (theme === "adminlte_sep") {
+                $('#assets_path').show();
+                $('#assets_link').attr("href", "https://gitee.com/go-admin/themes/raw/master/adminlte/separation/public.zip");
+                return;
+            }
+
+            $('#assets_path').hide();
+        });
 
         $('#offline-mode input').change(function () {
             if ($(this).is(':checked')) {

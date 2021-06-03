@@ -147,7 +147,7 @@ operation_log_off: {{.OperationLogOff}}
 
 # 资源文件的本地路径
 # 当选择资源文件分离的主题模式时候需要设置此配置项。
-# asset_root_path: {{.AssetRootPath}}
+{{if eq .AssetRootPath ""}}# {{end}}asset_root_path: {{.AssetRootPath}}
 
 # URL格式
 # url_format:
