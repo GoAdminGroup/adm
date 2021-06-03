@@ -33,7 +33,7 @@ func startServer() {
 
 	beego.SetStaticPath("/uploads", "uploads")
 
-	if err := eng.AddConfigFromJSON("./config.json").
+	if err := eng.AddConfigFromYAML("./config.yml").
 		AddGenerators(tables.Generators).
 		Use(app); err != nil {
 		panic(err)

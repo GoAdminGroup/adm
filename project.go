@@ -1,12 +1,9 @@
 package main
 
 import (
-	"bytes"
 	"embed"
-	"encoding/json"
 	"errors"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"runtime"
@@ -262,6 +259,7 @@ func installProjectTmpl(p Project, cfg *config.Config, cfgFile string, info *dbI
 	fileConfigs.Add("./pages/index.go", "pages/index.go."+p.Theme+".tmpl", p, os.ModePerm)
 	fileConfigs.Add("./main_test.go", "main_test.go/"+langMap[p.Language]+".tmpl", p, 0644)
 	fileConfigs.Add("./README.md", "readme/"+langMap[p.Language]+".tmpl", p, 0644)
+	fileConfigs.Add("./config.yml", "config.yml/"+langMap[p.Language]+".tmpl", cfg, 0644)
 	fileConfigs.Add("./Makefile", "makefile.tmpl", p, 0644)
 
 	fileConfigs.AddRaw("./html/hello.tmpl", "hello.tmpl", 0644)
@@ -273,15 +271,4 @@ func installProjectTmpl(p Project, cfg *config.Config, cfgFile string, info *dbI
 	}
 
 	writeFilesOfInstallation(*fileConfigs)
-
-	configByte, err := json.MarshalIndent(cfg, "", "	")
-	checkError(err)
-	configByte = bytes.ReplaceAll(configByte, []byte(`
-	"logger": {
-		"encoder": {},
-		"rotate": {}
-	},`), []byte{})
-	configByte = bytes.ReplaceAll(configByte, []byte(`,
-	"animation": {}`), []byte{})
-	checkError(ioutil.WriteFile("./config.json", configByte, 0644))
 }

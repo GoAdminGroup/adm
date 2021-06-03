@@ -35,7 +35,7 @@ func startServer() {
 
 	eng := engine.Default()
 
-	if err := eng.AddConfigFromJSON("./config.json").
+	if err := eng.AddConfigFromYAML("./config.yml").
 		AddGenerators(tables.Generators).
 		Use(r); err != nil {
 		panic(err)

@@ -38,7 +38,7 @@ func startServer() {
 
 	eng := engine.Default()
 
-	if err := eng.AddConfigFromJSON("./config.json").
+	if err := eng.AddConfigFromYAML("./config.yml").
 		AddGenerators(tables.Generators).
 		Use(r); err != nil {
 		panic(err)
@@ -98,7 +98,7 @@ func startServer() {
 
 	beego.SetStaticPath("/uploads", "uploads")
 
-	if err := eng.AddConfigFromJSON("./config.json").
+	if err := eng.AddConfigFromYAML("./config.yml").
 		AddGenerators(tables.Generators).
 		Use(app); err != nil {
 		panic(err)
@@ -160,7 +160,7 @@ func startServer() {
 
 	eng := engine.Default()
 
-	if err := eng.AddConfigFromJSON("./config.json").
+	if err := eng.AddConfigFromYAML("./config.yml").
 		AddGenerators(tables.Generators).
 		Use(bu); err != nil {
 		panic(err)
@@ -223,7 +223,7 @@ func startServer() {
 
 	eng := engine.Default()
 
-	if err := eng.AddConfigFromJSON("./config.json").
+	if err := eng.AddConfigFromYAML("./config.yml").
 		AddGenerators(tables.Generators).
 		Use(r); err != nil {
 		panic(err)
@@ -306,7 +306,7 @@ func startServer() {
 
 	eng := engine.Default()
 
-	if err := eng.AddConfigFromJSON("./config.json").
+	if err := eng.AddConfigFromYAML("./config.yml").
 		AddGenerators(tables.Generators).
 		Use(e); err != nil {
 		panic(err)
@@ -365,7 +365,7 @@ func startServer() {
 
 	eng := engine.Default()
 
-	if err := eng.AddConfigFromJSON("./config.json").
+	if err := eng.AddConfigFromYAML("./config.yml").
 		AddGenerators(tables.Generators).
 		Use(router); err != nil {
 		panic(err)
@@ -425,7 +425,7 @@ func startServer() {
 
 	eng := engine.Default()
 
-	if err := eng.AddConfigFromJSON("./config.json").
+	if err := eng.AddConfigFromYAML("./config.yml").
 		AddGenerators(tables.Generators).
 		Use(s); err != nil {
 		panic(err)
@@ -485,7 +485,7 @@ func startServer() {
 
 	eng := engine.Default()
 
-	if err := eng.AddConfigFromJSON("./config.json").
+	if err := eng.AddConfigFromYAML("./config.yml").
 		AddGenerators(tables.Generators).
 		Use(app); err != nil {
 		panic(err)
@@ -545,7 +545,7 @@ func startServer() {
 
 	eng := engine.Default()
 
-	if err := eng.AddConfigFromJSON("./config.json").
+	if err := eng.AddConfigFromYAML("./config.yml").
 		AddGenerators(tables.Generators).
 		Use(app); err != nil {
 		panic(err)
