@@ -1,0 +1,26 @@
+{{define "project"}}
+; default database config 默认数据库配置
+[database]{{if eq .DriverName "sqlite"}}
+driver = sqlite
+file = {{.File}}
+{{else}}
+driver = {{.DriverName}}
+host = {{.Host}}
+username = {{.User}} 
+port = {{.Port}}
+password = {{.Password}}
+database = {{.Database}} 
+{{end}}
+; Here are new tables to generate. 新的待转换的表格
+; tables = new_table1,new_table2
+
+; specified connection database config 指定数据库配置
+; for example, database config which connection name is mydb.
+;[database.mydb]
+
+; table model config 数据模型设置
+[model]
+package = tables
+connection = default
+output = ./tables
+{{end}}
