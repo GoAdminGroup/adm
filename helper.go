@@ -16,8 +16,6 @@ import (
 
 	"github.com/GoAdminGroup/go-admin/modules/utils"
 	"github.com/mgutz/ansi"
-
-	"github.com/GoAdminGroup/go-admin/modules/system"
 )
 
 const version = "v1.2.23"
