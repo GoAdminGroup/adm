@@ -20,8 +20,10 @@ import (
 	"github.com/GoAdminGroup/go-admin/modules/system"
 )
 
+const version = "v1.2.23"
+
 func cliInfo() {
-	fmt.Println("GoAdmin CLI " + system.Version() + compareVersion(system.Version()))
+	fmt.Println("GoAdmin CLI " + version + compareVersion(version))
 	fmt.Println()
 }
 
@@ -33,7 +35,7 @@ func checkError(err error) {
 
 func getLatestVersion() string {
 	http.DefaultClient.Timeout = 3 * time.Second
-	res, err := http.Get("https://goproxy.cn/github.com/!go!admin!group/go-admin/@v/list")
+	res, err := http.Get("https://goproxy.cn/github.com/!go!admin!group/adm/@v/list")
 
 	if err != nil || res.Body == nil {
 		return ""
