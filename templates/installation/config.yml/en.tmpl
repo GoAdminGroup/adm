@@ -1,4 +1,9 @@
 {{define "project"}}
+# The configuration will be written to the database table goadmin_site when the application
+# is first started. Subsequent startup will give priority to loading configuration from
+# goadmin_site. If you want to modify, you can click the configuration center entry button in the
+# upper right corner of the website to finish the modification.
+
 # Database settings, support the configuration of multiple databases, currently supported
 # database drivers are: sqlite/mssql/mysql/postgresql.
 # The default database connection name is default, and the connection object can be obtained
@@ -31,7 +36,7 @@ database:
 # Unique ID of this application.
 app_id: {{.AppID}}
 
-# 定义的网站域名，用于cookie认证进行域名限制
+# Defined website domain name, used for cookie authentication for domain name restriction.
 # domain: {{.Domain}}
 # Language of the website
 language: {{.Language}}
