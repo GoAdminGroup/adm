@@ -39,7 +39,7 @@ var langs = map[string]map[string]string{
 		"Delete":                "删除",
 		"Export":                "导出",
 
-		"Use arrows to move, type to filter, enter to select": "使用方向键去移动，空格键选择，输入进行筛选",
+		"Use arrows to move, type to filter, enter to select": "使用方向键去移动，回车键选择，输入进行筛选",
 		"select all": "选择全部",
 		"Use arrows to move, space to select, type to filter": "使用方向键去移动，空格键选择，输入进行筛选",
 		"Add admin user success~~🍺🍺":                          "增加用户成功~~🍺🍺",
