@@ -39,7 +39,7 @@ var langs = map[string]map[string]string{
 		"Delete":                "删除",
 		"Export":                "导出",
 
-		"Use arrows to move, type to filter, enter to select": "使用方向键去移动，空格键选择，输入进行筛选",
+		"Use arrows to move, type to filter, enter to select": "使用方向键去移动，回车键选择，输入进行筛选",
 		"select all": "选择全部",
 		"Use arrows to move, space to select, type to filter": "使用方向键去移动，空格键选择，输入进行筛选",
 		"Add admin user success~~🍺🍺":                          "增加用户成功~~🍺🍺",
@@ -120,6 +120,9 @@ var langs = map[string]map[string]string{
 		"web.port number which application will listen on":       "应用监听的端口号。",
 		"web.url prefix of the running application":              "运行访问的路由前缀。",
 
+		"web.assets path":                "资源文件地址",
+		"web.local path of assets files": "资源文件的本地路径",
+
 		"web.official website":                 "官方网站",
 		"web.current version":                  "当前版本",
 		"web.goadmin web installation program": "GoAdmin Web安装程序",
@@ -176,6 +179,9 @@ var langs = map[string]map[string]string{
 		"web.module name is the path of go module":               "Module name is the path of go module.",
 		"web.port number which application will listen on":       "Port number which application will listen on.",
 		"web.url prefix of the running application":              "Url prefix of the running application.",
+
+		"web.assets path":                "Assets path",
+		"web.local path of assets files": "Local path of assets files",
 
 		"web.official website":                 "Official Website",
 		"web.current version":                  "Current Version",

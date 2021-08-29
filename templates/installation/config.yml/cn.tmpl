@@ -1,0 +1,167 @@
+{{define "project"}}
+# 配置将在应用第一次启动时写入到数据库的数据表 goadmin_site 中。后续启动将优先从 goadmin_site
+# 中进行加载配置，如果希望修改，可以点击网站右上角配置中心入口进入修改。
+
+# 数据库设置，支持配置多个数据库，目前支持的数据库驱动为：sqlite/mssql/mysql/postgresql
+# 默认数据库连接名为default，框架中可以通过自定义的数据库连接名获取到该连接对象。
+# 在数据表模型中也可以通过指定对应的连接名来获取对应数据。
+database:
+  default:
+{{- $database := (index .Databases "default")}}
+    driver: {{$database.Driver}}
+{{- if ne $database.Driver "sqlite"}}
+    host: {{$database.Host}}
+    port: {{$database.Port}}
+    user: {{$database.User}}
+    pwd: {{$database.Pwd}}
+    name: {{$database.Name}}    
+    max_idle_con: {{$database.MaxIdleCon}}
+    max_open_con: {{$database.MaxOpenCon}}
+{{- else}}
+    file: {{$database.File}}
+{{end}}
+    # params为驱动需要的额外的传参
+    # params:
+    #   character: utf8mb4
+
+    # 如果设置了DSN，那么以上配置除了Driver都将失效而以配置的DSN为准
+    # dsn: ""
+
+# 本应用的唯一ID
+app_id: {{.AppID}}
+
+# 定义的网站域名，用于cookie认证进行域名限制
+# domain: {{.Domain}}
+# 网站语言
+language: {{.Language}}
+# 全局路由前缀
+prefix: {{.UrlPrefix}}
+# UI主题
+theme: {{.Theme}}
+# 文件存储设置，设置上传文件的存储路径以及路由前缀
+store:
+  path: {{.Store.Path}}
+  prefix: {{.Store.Prefix}}
+
+# 网站标题
+title: {{.Title}}
+# 网站LOGO文字，将显示在登录页面以及侧边栏上方，可以为自定义HTML
+logo: {{.Logo}}
+# 网站LOGO缩小文字，将显示缩小的侧边栏上方，可以为自定义HTML
+mini_logo: {{.MiniLogo}}
+# 首页路由
+index: {{.IndexUrl}}
+# 登录路由
+login_url: {{.LoginUrl}}
+
+# 是否为调试模式
+debug: {{.Debug}}
+# 开发环境：本地 EnvLocal / 测试 EnvTest / 生产 EnvProd
+env: {{.Env}}
+
+# info日志本地存储路径
+info_log: {{.InfoLogPath}}
+# error日志本地存储路径
+error_log: {{.ErrorLogPath}}
+# access日志本地存储路径
+access_log: {{.AccessLogPath}}
+
+# 是否关闭资源访问日志
+# access_assets_log_off: {{.AccessAssetsLogOff}}
+# 是否关闭sql日志
+# sql_log: {{.SqlLog}}
+# 是否关闭access日志
+# access_log_off: {{.AccessLogOff}}
+# 是否关闭info日志
+# info_log_off: {{.InfoLogOff}}
+# 是否关闭error日志
+# error_log_off: {{.ErrorLogOff}}
+
+# 颜色主题，当框架主题为adminlte时生效
+# color_scheme: {{.ColorScheme}}
+
+# session的时长，单位为秒，默认为两小时。连续不登两小时后需要重新登录。
+session_life_time: {{.SessionLifeTime}}
+
+# 资源路由，当使用CDN时，此配置生效
+# asset_url: {{.AssetUrl}}
+
+# 文件上传引擎
+file_upload_engine:
+  name: {{.FileUploadEngine.Name}}
+
+# 自定义头部HTML
+# custom_head_html: {{.CustomHeadHtml}}
+# 自定义底部HTML
+# custom_foot_html: {{.CustomFootHtml}}
+# 自定义底部信息
+# footer_info: {{.FooterInfo}}
+
+# 登录页标题
+# login_title: {{.LoginTitle}}
+# 登录页Logo
+# login_logo: {{.LoginLogo}}
+
+# 自定义的用户表
+# auth_user_table: {{.AuthUserTable}}
+
+# 是否不限制多IP登录，如果需要多浏览器登录，请设置为true
+# no_limit_login_ip: {{.NoLimitLoginIP}}
+
+# 是否关闭网站
+# site_off: {{.SiteOff}}
+
+# 是否隐藏配置中心入口
+# hide_config_center_entrance: {{.HideConfigCenterEntrance}}
+# 是否禁止配置修改
+# prohibit_config_modification: {{.ProhibitConfigModification}}
+# 是否隐藏应用中心入口
+# hide_app_info_entrance: {{.HideAppInfoEntrance}}
+# 是否隐藏工具入口
+# hide_tool_entrance: {{.HideToolEntrance}}
+# 是否隐藏插件中心入口
+# hide_plugin_entrance: {{.HidePluginEntrance}}
+
+# 自定义404页面HTML
+# custom_404_html: {{.Custom404HTML}}
+# 自定义403页面HTML
+# custom_403_html: {{.Custom403HTML}}
+# 自定义500页面HTML
+# custom_500_html: {{.Custom500HTML}}
+
+# 是否开放admin api
+# open_admin_api: {{.OpenAdminApi}}
+# 是否隐藏用户中心入口
+# hide_visitor_user_center_entrance: {{.HideVisitorUserCenterEntrance}}
+
+# 排除的需要加载的主题组件
+# exclude_theme_components:
+# - ""
+
+# 引导文件的本地路径
+bootstrap_file_path: {{.BootstrapFilePath}}
+# go.mod文件的本地路径
+go_mod_file_path: {{.GoModFilePath}}
+
+# 是否允许删除操作日志
+allow_del_operation_log: {{.AllowDelOperationLog}}
+# 是否关闭操作日志
+operation_log_off: {{.OperationLogOff}}
+
+# 资源文件的本地路径
+# 当选择资源文件分离的主题模式时候需要设置此配置项。
+{{if eq .AssetRootPath ""}}# {{end}}asset_root_path: {{.AssetRootPath}}
+
+# URL格式
+# url_format:
+#   info: /info/:__prefix
+#   detail: /info/:__prefix/detail
+#   create: /new/:__prefix
+#   delete: /delete/:__prefix
+#   export: /export/:__prefix
+#   edit: /edit/:__prefix
+#   show_edit: /info/:__prefix/edit
+#   show_create: /info/:__prefix/new
+#   update: /update/:__prefix
+
+{{end}}
