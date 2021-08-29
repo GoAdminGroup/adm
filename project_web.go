@@ -1,6 +1,7 @@
 package main
 
 import (
+	_ "embed"
 	"fmt"
 	"html/template"
 	"log"
@@ -18,6 +19,9 @@ import (
 	"github.com/GoAdminGroup/go-admin/modules/system"
 	"github.com/GoAdminGroup/go-admin/modules/utils"
 )
+
+//go:embed templates/installation/installation.tmpl
+var projectWebTmpl string
 
 func buildProjectWeb(port string) {
 
@@ -219,6 +223,7 @@ func buildProjectWeb(port string) {
 				MiniLogo:          template.HTML(r.PostFormValue("sidebar_min_logo")),
 				Title:             r.PostFormValue("web_title"),
 				Databases:         dbList,
+				AssetRootPath:     r.PostFormValue("assets_path"),
 			})
 
 			installProjectTmpl(p, cfg, "", info)
