@@ -54,6 +54,7 @@ func getDBInfoFromINIConfig(cfg *ini.File, connection string) *dbInfo {
 			File:       dbCfgModel.Key("file").Value(),
 			Password:   dbCfgModel.Key("password").Value(),
 			Database:   dbCfgModel.Key("database").Value(),
+			Schema:     dbCfgModel.Key("schema").Value(),
 		}
 	}
 
