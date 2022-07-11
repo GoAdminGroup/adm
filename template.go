@@ -31,10 +31,6 @@ func getThemeTemplate(moduleName, themeName string) {
 }
 
 func downloadTo(url, output string) {
-	defer func() {
-		_ = os.Remove(output)
-	}()
-
 	req, err := http.NewRequest("GET", url, nil)
 
 	checkError(err)
@@ -52,11 +48,17 @@ func downloadTo(url, output string) {
 	checkError(err)
 
 	_, err = io.Copy(file, res.Body)
+	if err != nil {
+		_ = os.Remove(output)
+	}
 
 	checkError(err)
 }
 
 func unzipDir(src, dest string) error {
+	defer func() {
+		_ = os.Remove(src)
+	}()
 	r, err := zip.OpenReader(src)
 	if err != nil {
 		return err
