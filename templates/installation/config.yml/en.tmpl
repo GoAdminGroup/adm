@@ -19,9 +19,9 @@ database:
     port: {{$database.Port}}
     user: {{$database.User}}
     pwd: {{$database.Pwd}}
-    name: {{$database.Name}}    
-    max_idle_con: {{$database.MaxIdleCon}}
-    max_open_con: {{$database.MaxOpenCon}}
+    name: {{$database.Name}}
+    max_idle_con: {{$database.MaxIdleConns}}
+    max_open_con: {{$database.MaxOpenConns}}
 {{- else}}
     file: {{$database.File}}
 {{end}}
