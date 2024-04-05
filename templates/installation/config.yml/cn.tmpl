@@ -164,4 +164,43 @@ operation_log_off: {{.OperationLogOff}}
 #   show_create: /info/:__prefix/new
 #   update: /update/:__prefix
 
+# Logger配置用于设置日志记录器的行为和设置。
+# 更多细节：https://pkg.go.dev/go.uber.org/zap
+logger:
+  # Encoder配置用于设置日志编码器的行为和设置。
+  encoder:
+    # 时间键
+    time_key: {{.Logger.Encoder.TimeKey}}
+    # 级别键
+    level_key: {{.Logger.Encoder.LevelKey}}
+    # 名称键
+    name_key: {{.Logger.Encoder.NameKey}}
+    # 调用者键
+    caller_key: {{.Logger.Encoder.CallerKey}}
+    # 消息键
+    message_key: {{.Logger.Encoder.MessageKey}}
+    # 堆栈跟踪键
+    stacktrace_key: {{.Logger.Encoder.StacktraceKey}}
+    # 级别格式
+    level: {{.Logger.Encoder.Level}}
+    # 时间格式
+    time: {{.Logger.Encoder.Time}}
+    # 间隔
+    duration: {{.Logger.Encoder.Duration}}
+    # 调用者格式
+    caller: {{.Logger.Encoder.Caller}}
+    # 编码格式 console/json
+    encoding: {{.Logger.Encoder.Encoding}}
+
+  # Rotate配置用于设置日志轮转的行为和设置。
+  rotate:
+    # 最大保存时间
+    max_age: {{.Logger.Rotate.MaxSize}}
+    # 最大保存数量
+    max_backups: {{.Logger.Rotate.MaxBackups}}
+    # 最大大小
+    max_size: {{.Logger.Rotate.MaxAge}}
+    # 压缩
+    compress: {{.Logger.Rotate.Compress}}
+
 {{end}}

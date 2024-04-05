@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"fmt"
 	"go/format"
-	"io/ioutil"
 	"os"
 	"strings"
 	"text/template"
@@ -18,20 +17,20 @@ func getPluginTemplate(modulePath, pluginName string) {
 		PluginName:  pluginName,
 		PluginTitle: strings.Title(pluginName),
 	}
-	checkError(ioutil.WriteFile("./"+pluginName+".go", parsePluginTmpl("main", data), 0644))
-	checkError(ioutil.WriteFile("./router.go", parsePluginTmpl("router", data), 0644))
+	checkError(os.WriteFile("./"+pluginName+".go", parsePluginTmpl("main", data), 0644))
+	checkError(os.WriteFile("./router.go", parsePluginTmpl("router", data), 0644))
 	checkError(os.Mkdir("controller", os.ModePerm))
-	checkError(ioutil.WriteFile("./controller/common.go", parsePluginTmpl("controller", data), 0644))
-	checkError(ioutil.WriteFile("./controller/example.go", parsePluginTmpl("controller_example", data), 0644))
+	checkError(os.WriteFile("./controller/common.go", parsePluginTmpl("controller", data), 0644))
+	checkError(os.WriteFile("./controller/example.go", parsePluginTmpl("controller_example", data), 0644))
 	checkError(os.Mkdir("guard", os.ModePerm))
-	checkError(ioutil.WriteFile("./guard/guard.go", parsePluginTmpl("guard", data), 0644))
-	checkError(ioutil.WriteFile("./guard/example.go", parsePluginTmpl("guard_example", data), 0644))
+	checkError(os.WriteFile("./guard/guard.go", parsePluginTmpl("guard", data), 0644))
+	checkError(os.WriteFile("./guard/example.go", parsePluginTmpl("guard_example", data), 0644))
 	checkError(os.Mkdir("modules", os.ModePerm))
 	checkError(os.Mkdir("./modules/language", os.ModePerm))
-	checkError(ioutil.WriteFile("./modules/language/language.go", parsePluginTmpl("language", data), 0644))
-	checkError(ioutil.WriteFile("./modules/language/cn.go", parsePluginTmpl("language_cn", data), 0644))
-	checkError(ioutil.WriteFile("./modules/language/en.go", parsePluginTmpl("language_en", data), 0644))
-	checkError(ioutil.WriteFile("./Makefile", []byte(pluginTemplate["makefile"]), 0644))
+	checkError(os.WriteFile("./modules/language/language.go", parsePluginTmpl("language", data), 0644))
+	checkError(os.WriteFile("./modules/language/cn.go", parsePluginTmpl("language_cn", data), 0644))
+	checkError(os.WriteFile("./modules/language/en.go", parsePluginTmpl("language_en", data), 0644))
+	checkError(os.WriteFile("./Makefile", []byte(pluginTemplate["makefile"]), 0644))
 	checkError(os.Mkdir("example", os.ModePerm))
 	checkError(os.Mkdir("tests", os.ModePerm))
 	fmt.Println()

@@ -5,7 +5,6 @@ import (
 	"crypto/md5"
 	"encoding/hex"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 	"path"
@@ -75,7 +74,7 @@ func jsMinifier(inputDir, outputFile string, hash bool) {
 		}
 
 		filePath := inputDir + name
-		fileTxt, err := ioutil.ReadFile(filePath)
+		fileTxt, err := os.ReadFile(filePath)
 		if err != nil {
 			checkError(err)
 		}
@@ -128,7 +127,7 @@ func removeOutputFile(outputFile string) error {
 func getInputFiles(inputDir string) ([]string, error) {
 	filenames := make([]string, 0, 1)
 
-	files, err := ioutil.ReadDir(inputDir)
+	files, err := os.ReadDir(inputDir)
 	if err != nil {
 		log.Panicln("readInputDirError", err)
 		return filenames, err
@@ -157,7 +156,7 @@ func combineFiles(filenames []string, inputDir string) (string, error) {
 		}
 
 		filePath := inputDir + name
-		fileTxt, err := ioutil.ReadFile(filePath)
+		fileTxt, err := os.ReadFile(filePath)
 		if err != nil {
 			return "", err
 		}
@@ -189,7 +188,7 @@ func makeMini(notMinifiedString, fileType string) (string, error) {
 }
 
 func writeOutputFile(outputText, outputFile string) error {
-	err := ioutil.WriteFile(outputFile, []byte(outputText), 0644)
+	err := os.WriteFile(outputFile, []byte(outputText), 0644)
 	if err != nil {
 		return err
 	}

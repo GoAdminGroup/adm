@@ -172,4 +172,43 @@ operation_log_off: {{.OperationLogOff}}
 #   show_create: /info/:__prefix/new
 #   update: /update/:__prefix
 
+# Logger configuration is used to set the behavior and settings of the logger.
+# More details: https://pkg.go.dev/go.uber.org/zap
+logger:
+# Encoder configuration is used to set the behavior and settings of the log encoder.
+  encoder:
+    # Time key
+    time_key: {{.Logger.Encoder.TimeKey}}
+    # Level key
+    level_key: {{.Logger.Encoder.LevelKey}}
+    # Name key
+    name_key: {{.Logger.Encoder.NameKey}}
+    # Caller key
+    caller_key: {{.Logger.Encoder.CallerKey}}
+    # Message key
+    message_key: {{.Logger.Encoder.MessageKey}}
+    # Stacktrace key
+    stacktrace_key: {{.Logger.Encoder.StacktraceKey}}
+    # Level format
+    level: {{.Logger.Encoder.Level}}
+    # Time format
+    time: {{.Logger.Encoder.Time}}
+    # Duration
+    duration: {{.Logger.Encoder.Duration}}
+    # Caller format
+    caller: {{.Logger.Encoder.Caller}}
+    # Encoding format (console/json)
+    encoding: {{.Logger.Encoder.Encoding}}
+
+  # Rotate configuration is used to set the behavior and settings of log rotation.
+  rotate:
+    # Maximum age to retain old log files
+    max_age: {{.Logger.Rotate.MaxSize}}
+    # Maximum number of old log files to retain
+    max_backups: {{.Logger.Rotate.MaxBackups}}
+    # Maximum size of a log file before it's rotated
+    max_size: {{.Logger.Rotate.MaxAge}}
+    # Compression setting for rotated log files
+    compress: {{.Logger.Rotate.Compress}}
+
 {{end}}

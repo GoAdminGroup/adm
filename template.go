@@ -4,7 +4,6 @@ import (
 	"archive/zip"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -116,19 +115,19 @@ func unzipDir(src, dest string) error {
 }
 
 func replaceContents(fileDir, moduleName, themeName string) {
-	files, err := ioutil.ReadDir(fileDir)
+	files, err := os.ReadDir(fileDir)
 	checkError(err)
 	for _, file := range files {
 		path := fileDir + "/" + file.Name()
 		if !file.IsDir() {
-			buf, err := ioutil.ReadFile(path)
+			buf, err := os.ReadFile(path)
 			checkError(err)
 			content := string(buf)
 
 			newContent := utils.ReplaceAll(content, "github.com/GoAdminGroup/themes/adminlte", moduleName,
 				"adminlte", themeName, "Adminlte", strings.Title(themeName))
 
-			checkError(ioutil.WriteFile(path, []byte(newContent), 0))
+			checkError(os.WriteFile(path, []byte(newContent), 0))
 		}
 	}
 }

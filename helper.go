@@ -6,8 +6,8 @@ import (
 	"errors"
 	"fmt"
 	"go/format"
+	"io"
 	"io/fs"
-	"io/ioutil"
 	"net/http"
 	"os"
 	"strings"
@@ -47,7 +47,7 @@ func getLatestVersion() string {
 		return ""
 	}
 
-	body, err := ioutil.ReadAll(res.Body)
+	body, err := io.ReadAll(res.Body)
 
 	if err != nil || body == nil {
 		return ""
@@ -95,7 +95,7 @@ func mkdirs(dirs []string) {
 
 func mkEmptyFiles(names []string) {
 	for _, name := range names {
-		checkError(ioutil.WriteFile(name, []byte{}, os.ModePerm))
+		checkError(os.WriteFile(name, []byte{}, os.ModePerm))
 	}
 }
 
@@ -157,16 +157,16 @@ func (cfgs *WriteFilesConfig) AddRaw(path, file string, perm fs.FileMode) {
 
 func writeFileOfInstallation(cfg WriteFileConfig) {
 	if cfg.IsFormat {
-		checkError(ioutil.WriteFile(cfg.Path, parseFileWithFormat(readFileOfInstallation(&installationTmplFS, cfg.File), cfg.Data), cfg.Perm))
+		checkError(os.WriteFile(cfg.Path, parseFileWithFormat(readFileOfInstallation(&installationTmplFS, cfg.File), cfg.Data), cfg.Perm))
 		return
 	}
-	checkError(ioutil.WriteFile(cfg.Path, parseFile(readFileOfInstallation(&installationTmplFS, cfg.File), cfg.Data), cfg.Perm))
+	checkError(os.WriteFile(cfg.Path, parseFile(readFileOfInstallation(&installationTmplFS, cfg.File), cfg.Data), cfg.Perm))
 }
 
 func writeFilesOfInstallation(cfgs WriteFilesConfig) {
 	for _, cfg := range cfgs {
 		if !cfg.Parse {
-			checkError(ioutil.WriteFile(cfg.Path, []byte(readFileOfInstallation(&installationTmplFS, cfg.File)), cfg.Perm))
+			checkError(os.WriteFile(cfg.Path, []byte(readFileOfInstallation(&installationTmplFS, cfg.File)), cfg.Perm))
 			continue
 		}
 		writeFileOfInstallation(cfg)

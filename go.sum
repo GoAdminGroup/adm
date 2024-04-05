@@ -8,8 +8,8 @@ github.com/AlecAivazis/survey/v2 v2.3.1 h1:lzkuHA60pER7L4eYL8qQJor4bUWlJe4V0gqAT
 github.com/AlecAivazis/survey/v2 v2.3.1/go.mod h1:TH2kPCDU3Kqq7pLbnCWwZXDBjnhZtmsCle5EiYDJ2fg=
 github.com/BurntSushi/toml v0.3.1 h1:WXkYYl6Yr3qBf1K79EBnL4mak0OimBfB0XUf9Vl28OQ=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
-github.com/GoAdminGroup/go-admin v1.2.23 h1:myn18AVWNs2U2e2OwzzSDk1QNlOsOvv1t8G4X8UygE4=
-github.com/GoAdminGroup/go-admin v1.2.23/go.mod h1:EX+fDr3yPIQ8jKoXzjh5A8MbhfCY2KOhcd0rctlxBH4=
+github.com/GoAdminGroup/go-admin v1.2.24 h1:s1pyok1zAkDj+Ro0TKsB+2igyJ7sepHIXpB78LeuoQU=
+github.com/GoAdminGroup/go-admin v1.2.24/go.mod h1:voQOP8uoaNi/V0EO3WtOvAm3fvTaNlxrmpe4nZdbzas=
 github.com/GoAdminGroup/html v0.0.1 h1:SdWNWl4OKPsvDk2GDp5ZKD6ceWoN8n4Pj6cUYxavUd0=
 github.com/GoAdminGroup/html v0.0.1/go.mod h1:A1laTJaOx8sQ64p2dE8IqtstDeCNBHEazrEp7hR5VvM=
 github.com/NebulousLabs/fastrand v0.0.0-20181203155948-6fb6489aac4e h1:n+DcnTNkQnHlwpsrHoQtkrJIO7CBx029fw6oR4vIob4=
@@ -58,6 +58,8 @@ github.com/google/go-cmp v0.2.0/go.mod h1:oXzfMopK8JAjlY9xF4vHSVASa0yLyX7SntLO5a
 github.com/google/martian v2.1.0+incompatible/go.mod h1:9I4somxYTbIHy5NJKHRl3wXiIaQGbYVAs8BPL6v8lEs=
 github.com/google/pprof v0.0.0-20181206194817-3ea8567a2e57/go.mod h1:zfwlbNMJ+OItoe0UupaVj+oy1omPYYDuagoSzA8v9mc=
 github.com/google/renameio v0.1.0/go.mod h1:KWCgfxg9yswjAJkECMjeO8J8rahYeXnNhOm40UhjYkI=
+github.com/google/uuid v1.3.0 h1:t6JiXgmwXMjEs8VusXIJk2BXHsn+wx8BZdTaoZ5fu7I=
+github.com/google/uuid v1.3.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
 github.com/googleapis/gax-go/v2 v2.0.4/go.mod h1:0Wqv26UfaUD9n4G6kQubkQ+KchISgw+vpHVxEJEs9eg=
 github.com/gopherjs/gopherjs v0.0.0-20181017120253-0766667cb4d1 h1:EGx4pi6eqNxGaHF6qqu48+N2wcFQ5qg5FXgOdqsJ5d8=
 github.com/gopherjs/gopherjs v0.0.0-20181017120253-0766667cb4d1/go.mod h1:wJfORRmW1u3UXTncJ5qlYoELFm8eSnnEO6hX4iZ3EWY=
@@ -133,8 +135,6 @@ github.com/prometheus/procfs v0.0.0-20181005140218-185b4288413d/go.mod h1:c3At6R
 github.com/prometheus/procfs v0.0.0-20190117184657-bf6a532e95b1/go.mod h1:c3At6R/oaqEKCNdg8wHV1ftS6bRYblBhIjjI8uT2IGk=
 github.com/rcrowley/go-metrics v0.0.0-20181016184325-3113b8401b8a/go.mod h1:bCqnVzQkZxMG4s8nGwiZ5l3QUCyqpo9Y+/ZMZ9VjZe4=
 github.com/rogpeppe/go-internal v1.3.0/go.mod h1:M8bDsm7K2OlrFYOpmOWEs/qY81heoFRclV5y23lUDJ4=
-github.com/satori/go.uuid v1.2.0 h1:0uYX9dsZ2yD7q2RtLRtPSdGDWzjeM3TbMJP9utgA0ww=
-github.com/satori/go.uuid v1.2.0/go.mod h1:dA0hQrYB0VpLJoorglMZABFdXlWrHn1NEOzdhQKdks0=
 github.com/schollz/progressbar v1.0.0 h1:gbyFReLHDkZo8mxy/dLWMr+Mpb1MokGJ1FqCiqacjZM=
 github.com/schollz/progressbar v1.0.0/go.mod h1:/l9I7PC3L3erOuz54ghIRKUEFcosiWfLvJv+Eq26UMs=
 github.com/sirupsen/logrus v1.2.0/go.mod h1:LxeOpSwHxABJmUn/MG1IvRgCAasNZTLOkJPxbbu5VWo=

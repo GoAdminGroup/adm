@@ -246,6 +246,9 @@ var installationTmplFS embed.FS
 
 func installProjectTmpl(p Project, cfg *config.Config, cfgFile string, info *dbInfo) {
 
+	cfg.Logger.Encoder = defaultEncoderCfg
+	cfg.Logger.Rotate = defaultRotateCfg
+
 	mkdirs([]string{"pages", "tables", "logs", "uploads", "html", "build"})
 	mkEmptyFiles([]string{"./logs/access.log", "./logs/info.log", "./logs/error.log"})
 
@@ -278,3 +281,25 @@ func installProjectTmpl(p Project, cfg *config.Config, cfgFile string, info *dbI
 
 	writeFilesOfInstallation(*fileConfigs)
 }
+
+var (
+	defaultEncoderCfg = config.EncoderCfg{
+		TimeKey:       "ts",
+		LevelKey:      "level",
+		NameKey:       "logger",
+		CallerKey:     "caller",
+		MessageKey:    "msg",
+		StacktraceKey: "stacktrace",
+		Level:         "capitalColor",
+		Time:          "ISO8601",
+		Duration:      "seconds",
+		Caller:        "short",
+		Encoding:      "console",
+	}
+	defaultRotateCfg = config.RotateCfg{
+		MaxSize:    10,
+		MaxBackups: 5,
+		MaxAge:     30,
+		Compress:   false,
+	}
+)

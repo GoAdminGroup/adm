@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 	"path"
 	"strings"
 )
@@ -16,7 +16,7 @@ var ` + varName + ` = map[string]string{`
 
 	content += `}`
 
-	_ = ioutil.WriteFile(outputPath, []byte(content), 0644)
+	_ = os.WriteFile(outputPath, []byte(content), 0644)
 }
 
 func fixPath(p string) string {
@@ -27,7 +27,7 @@ func fixPath(p string) string {
 }
 
 func getContentFromDir(content, dirPath, rootPath string) string {
-	files, _ := ioutil.ReadDir(dirPath)
+	files, _ := os.ReadDir(dirPath)
 
 	for _, f := range files {
 
@@ -36,7 +36,7 @@ func getContentFromDir(content, dirPath, rootPath string) string {
 			continue
 		}
 
-		b, err := ioutil.ReadFile(dirPath + f.Name())
+		b, err := os.ReadFile(dirPath + f.Name())
 		if err != nil {
 			fmt.Print(err)
 		}
