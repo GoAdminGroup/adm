@@ -5,18 +5,9 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
-
-	"github.com/jteeuwen/go-bindata"
 )
 
 func compileAsset(rootPath, outputPath, packageName string) {
-	cfg := bindata.NewConfig()
-	cfg.Package = packageName
-	cfg.Output = outputPath + "assets.go"
-	cfg.Input = make([]bindata.InputConfig, 0)
-	cfg.Input = append(cfg.Input, parseInput(rootPath+"..."))
-	checkError(bindata.Translate(cfg))
-
 	rootPathArr := strings.Split(rootPath, "assets")
 	if len(rootPathArr) > 0 {
 		listContent := `package ` + packageName + `
@@ -88,17 +79,4 @@ func getAllFiles(dirPth string) (files []string, err error) {
 	}
 
 	return files, nil
-}
-
-func parseInput(path string) bindata.InputConfig {
-	if strings.HasSuffix(path, "/...") {
-		return bindata.InputConfig{
-			Path:      filepath.Clean(path[:len(path)-4]),
-			Recursive: true,
-		}
-	}
-	return bindata.InputConfig{
-		Path:      filepath.Clean(path),
-		Recursive: false,
-	}
 }
