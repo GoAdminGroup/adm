@@ -81,15 +81,7 @@ func jsMinifier(inputDir, outputFile string, hash bool) {
 
 		fmt.Println("file path", filePath)
 
-		m := minify.New()
-		m.AddFunc("text/javascript", js.Minify)
-
-		minifiedString, err := m.Bytes("text/javascript", fileTxt)
-		if err != nil {
-			checkError(err)
-		}
-
-		_, err = b.Write(minifiedString)
+		_, err = b.Write(append(fileTxt, []byte("\n")...))
 		if err != nil {
 			checkError(err)
 		}
