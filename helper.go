@@ -18,7 +18,7 @@ import (
 	"github.com/mgutz/ansi"
 )
 
-const version = "v1.2.26"
+const version = "v1.2.27"
 
 func cliInfo() {
 	fmt.Println("GoAdmin CLI " + version + compareVersion(version))
