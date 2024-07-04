@@ -10,6 +10,8 @@ github.com/AlecAivazis/survey/v2 v2.3.1/go.mod h1:TH2kPCDU3Kqq7pLbnCWwZXDBjnhZtm
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/GoAdminGroup/go-admin v1.2.26 h1:kk18rVrteLcrzH7iMM5p/13jghDC5n3DJG/7zAnbnEU=
 github.com/GoAdminGroup/go-admin v1.2.26/go.mod h1:QXj94ZrDclKzqwZnAGUWaK3qY1Wfr6/Qy5GnRGeXR+k=
+github.com/GoAdminGroup/go-admin v1.2.27-0.20240704013520-bf41aec4c9b4 h1:c2sdVLA+OBSU+wH1SdvlJXf9dQ6jD98YcmUgZr5BU5o=
+github.com/GoAdminGroup/go-admin v1.2.27-0.20240704013520-bf41aec4c9b4/go.mod h1:QXj94ZrDclKzqwZnAGUWaK3qY1Wfr6/Qy5GnRGeXR+k=
 github.com/GoAdminGroup/html v0.0.1 h1:SdWNWl4OKPsvDk2GDp5ZKD6ceWoN8n4Pj6cUYxavUd0=
 github.com/GoAdminGroup/html v0.0.1/go.mod h1:A1laTJaOx8sQ64p2dE8IqtstDeCNBHEazrEp7hR5VvM=
 github.com/NebulousLabs/fastrand v0.0.0-20181203155948-6fb6489aac4e h1:n+DcnTNkQnHlwpsrHoQtkrJIO7CBx029fw6oR4vIob4=
