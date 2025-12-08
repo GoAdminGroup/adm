@@ -250,6 +250,7 @@ func buildProjectWeb(port string) {
 	err = open("http://localhost:" + port + "/")
 	if err != nil {
 		fmt.Println("failed to open browser", err)
+		fmt.Println("please open browser manually: http://localhost:" + port + "/")
 	}
 
 	quit := make(chan os.Signal, 1)
@@ -268,8 +269,24 @@ func open(url string) error {
 	case "darwin":
 		cmd = "open"
 	default: // "linux", "freebsd", "openbsd", "netbsd"
-		cmd = "xdg-open"
+		if !wslCheck() {
+			cmd = "xdg-open"
+		}
 	}
 	args = append(args, url)
+	if cmd == "" {
+		fmt.Println("please open browser manually: " + url)
+		return nil
+	}
 	return exec.Command(cmd, args...).Start()
+}
+
+func wslCheck() bool {
+	content, err := os.ReadFile("/proc/version")
+	if err != nil {
+		return false
+	}
+	osVersion := strings.ToLower(string(content))
+	fmt.Printf("OS Version: %s", osVersion)
+	return strings.Contains(osVersion, "microsoft") && strings.Contains(osVersion, "wsl")
 }
